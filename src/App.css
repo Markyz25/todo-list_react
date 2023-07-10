@@ -1,0 +1,10 @@
+.App {
+    width: 100vw;
+
+}
+
+.dark-theme, 
+.dark-theme a {
+    background-color: #333;
+    color: #fff;
+}
