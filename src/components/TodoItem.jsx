@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { v4 } from "uuid";
 import Form from "./Form";
 import IconButton from "@mui/material/IconButton";
@@ -11,6 +11,13 @@ import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
 const TodoItem = () => {
   const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    if(localStorage.getItem("localTasks")) {
+      const storedList = JSON.parse(localStorage.getItem("localTasks"))
+      setTasks(storedList)
+    }
+  }, [])
+
   const addTask = (title, category) => {
     const newTask = [
       ...tasks,
@@ -22,6 +29,7 @@ const TodoItem = () => {
       },
     ];
     setTasks(newTask);
+    localStorage.setItem("localTasks", JSON.stringify(newTask))
   };
 
   const deleteTask = (id) => {
@@ -30,12 +38,14 @@ const TodoItem = () => {
       newTask.id != id ? newTask : null
     );
     setTasks(filterTasks);
+    localStorage.setItem("localTasks", JSON.stringify(filterTasks))
   };
 
   const completeTask = (id) => {
     const newTasks = [...tasks]
     newTasks.map((newTask) => newTask.id === id ? (newTask.isComplete = !newTask.isComplete) : newTask)
     setTasks(newTasks) 
+    localStorage.setItem("localTasks", JSON.stringify(newTasks))
   }
 
   const {theme, toggleTheme} = useContext(ThemeContext)
