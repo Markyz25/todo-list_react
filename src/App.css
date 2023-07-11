@@ -1,10 +1,10 @@
 .App {
-    width: 100vw;
-
+    height: 100vh;
+    padding-top: 2em;
 }
 
 .dark-theme, 
 .dark-theme a {
     background-color: #333;
-    color: #fff;
+    color: #000;
 }

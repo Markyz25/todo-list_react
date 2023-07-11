@@ -6,7 +6,7 @@ import { ContainerTodo } from "../styles/ContainerTodo";
 import { Tasks } from "../styles/Tasks";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
+
 
 const TodoItem = () => {
   const [tasks, setTasks] = useState([]);
@@ -59,12 +59,9 @@ const TodoItem = () => {
     // localStorage.setItem("localTasks", JSON.stringify(newTasks))
   }
 
-  const {theme, toggleTheme} = useContext(ThemeContext)
 
   return (
     <div> 
-      <p>Tema:{theme}</p>
-      <button onClick={toggleTheme}>Clique</button>
       <Form addTask={addTask} />
       <div>
         {tasks.map((task) => (
