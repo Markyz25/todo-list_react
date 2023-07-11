@@ -11,12 +11,23 @@ import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
 const TodoItem = () => {
   const [tasks, setTasks] = useState([]);
 
+  // useEffect(() => {
+  //   if(localStorage.getItem("localTasks")) {
+  //     const storedList = JSON.parse(localStorage.getItem("localTasks"))
+  //     setTasks(storedList)
+  //   }
+  // }, [])
+
   useEffect(() => {
-    if(localStorage.getItem("localTasks")) {
-      const storedList = JSON.parse(localStorage.getItem("localTasks"))
-      setTasks(storedList)
+    if(localStorage.getItem("item") !== null) {
+      setTasks(JSON.parse(localStorage.getItem("item")))
     }
   }, [])
+  
+  useEffect(() => {
+    localStorage.setItem("item", JSON.stringify(tasks))
+  }, [tasks])
+
 
   const addTask = (title, category) => {
     const newTask = [
@@ -29,7 +40,7 @@ const TodoItem = () => {
       },
     ];
     setTasks(newTask);
-    localStorage.setItem("localTasks", JSON.stringify(newTask))
+    // localStorage.setItem("localTasks", JSON.stringify(newTask))
   };
 
   const deleteTask = (id) => {
@@ -38,14 +49,14 @@ const TodoItem = () => {
       newTask.id != id ? newTask : null
     );
     setTasks(filterTasks);
-    localStorage.setItem("localTasks", JSON.stringify(filterTasks))
+    // localStorage.setItem("localTasks", JSON.stringify(filterTasks))
   };
 
   const completeTask = (id) => {
     const newTasks = [...tasks]
     newTasks.map((newTask) => newTask.id === id ? (newTask.isComplete = !newTask.isComplete) : newTask)
     setTasks(newTasks) 
-    localStorage.setItem("localTasks", JSON.stringify(newTasks))
+    // localStorage.setItem("localTasks", JSON.stringify(newTasks))
   }
 
   const {theme, toggleTheme} = useContext(ThemeContext)
