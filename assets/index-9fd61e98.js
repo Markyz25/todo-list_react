@@ -220,7 +220,7 @@ Error generating stack: `+i.message+`
     margin: 0 auto;
     border-radius: 5px;
     padding: 2rem;
-    /* height: 5%; */
+    height: 90%;
     max-height: 700px;
     overflow-y: auto;
 
