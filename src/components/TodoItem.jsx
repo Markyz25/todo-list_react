@@ -63,7 +63,7 @@ const TodoItem = () => {
   return (
     <div> 
       <Form addTask={addTask} />
-      <div>
+      <div className="tasks">
         {tasks.map((task) => (
           <ContainerTodo key={task.id}>
             <Tasks style={{ textDecoration: task.isComplete ? "line-through" : "" }}>

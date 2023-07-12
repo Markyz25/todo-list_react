@@ -5,5 +5,10 @@ export const FormTasks = styled.form`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 1em 0;
 
+    @media screen and (max-width: 612px) {
+        flex-direction: column;
+        gap: 10px;
+    }
 `;

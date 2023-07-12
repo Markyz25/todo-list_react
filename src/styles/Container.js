@@ -10,4 +10,10 @@ export const Container = styled.div`
     /* height: 5%; */
     max-height: 700px;
     overflow-y: auto;
+
+    @media screen and (max-width: 610px) {
+        max-width: 90%;
+        /* padding: 0 2rem; */
+    }
+
 `;

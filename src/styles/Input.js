@@ -7,10 +7,16 @@ export const Input = styled.input`
     outline: none;
     padding: .6em 1em;
     width: 100%;
-    margin: 1em 0;
     font-size: 1.2em;
 
     &::placeholder {
         color: #1e1e1e;
     }
+
+    @media screen and (max-width: 612px) {
+        display: inline-block;
+        display: flex;
+    }
+
+
 `;

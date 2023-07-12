@@ -8,4 +8,8 @@ export const ContainerTodo = styled.div`
     margin-bottom: 20px;
     padding: .5em .7em;
     border-radius: 25px;
+
+    @media screen and (max-width: 612px) {
+        padding: .2em;
+    }
 `;

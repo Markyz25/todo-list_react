@@ -1,24 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Title, TodoStyle } from "../styles/TodoStyle";
 import TodoItem from "./TodoItem";
 import { ThemeContext } from "../context/ThemeContext";
-import Switch from "react-switch"
+import Switch from "@mui/material/Switch";
 
 const Todo = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <TodoStyle>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
+      className="todo-style"
       >
-        <Title>Lista de tarefas</Title>
-        <label>
-          <Switch onChange={toggleTheme} checked={{}}/>
-        </label>
+        <div>
+          <Title>Lista de tarefas</Title>
+        </div>
+        <div className="toggle">
+          <Switch
+            checked={theme}
+            onChange={toggleTheme}
+            className="checkbox"
+          />
+        </div>
       </div>
       <TodoItem />
     </TodoStyle>
